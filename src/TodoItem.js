@@ -1,3 +1,5 @@
+import { DeleteIcon } from './DeleteIcon';
+import { CompleteIcon } from './CompleteIcon';
 import './TodoItem.css'
 
 function TodoItem({ text, completed, onComplete, eliminarTodo }) {
@@ -9,15 +11,17 @@ function TodoItem({ text, completed, onComplete, eliminarTodo }) {
 
     return (
       <li className='TodoItem'>
-        <span 
+        {/* <span 
             className={ `Icon Icon-check ${ completed && "Icon-check--active" }`}
             onClick={ onComplete }
-        >V</span>
+        >V</span> */}
+        <CompleteIcon completed={ completed } onComplete={ onComplete }/>
         <p className={ `TodoItem-p ${ completed &&  "TodoItem-p--complete" }` }>{ text }</p>
-        <span 
+        <DeleteIcon eliminarTodo={ eliminarTodo }/>
+        {/* <span 
             className='Icon Icon-delete'
             onClick={ eliminarTodo }
-        >X</span>
+        >X</span> */}
       </li>
     );
   }
