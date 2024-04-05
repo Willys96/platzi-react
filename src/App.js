@@ -1,6 +1,6 @@
 import logo from './platzi.webp';
 //import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TodoCounter } from "./TodoCounter"
 import { TodoSearch } from "./TodoSearch"
 import { TodoList } from './TodoList';
@@ -16,19 +16,31 @@ import { CreateTodoButton } from './CreateTodoButton';
 // localStorage.setItem('TODOS_V1', defaultTodos);
 //localStorage.removeItem('TODOS_V1');  
 
-function App() {
-	const localStorageTodos = localStorage.getItem('TODOS_V1'); 
-	let parsedTodos;
-
-	if ( !localStorageTodos ) {
-		localStorage.setItem( 'TODOS_V1', JSON.stringify( [] ) );
-		parsedTodos = [];
+function useLocalStorage( itemName, initialValue  ) {
+	
+	const localStorageItem = localStorage.getItem(itemName); 
+	let parsedItem;
+	
+	if ( !localStorageItem ) {
+		localStorage.setItem( itemName, JSON.stringify( initialValue ) );
+		parsedItem = initialValue;
 	} else {
-		parsedTodos = JSON.parse( localStorageTodos ); 
+		parsedItem = JSON.parse( localStorageItem ); 
 	}
+	
+	const [ item, setItem ] = React.useState( parsedItem );
 
+	const saveItem = ( newItem ) => {
+		localStorage.setItem(itemName, JSON.stringify( newItem ));
+		setItem( newItem );	
+	}
+	
+	return [ item,  saveItem ];
+}
+
+function App() {
 	//Estados React
-	const [ todos, setTodos ] = React.useState( parsedTodos );
+	const [ todos, saveTodos ] = useLocalStorage( 'TODOS_V1', [] );
 	const [ searchValue, setSearchValue ] = React.useState( '' );
 	
 
@@ -44,12 +56,7 @@ function App() {
 		// ( todo ) => (
 		// 	todo.text.toLowerCase().includes( searchValue.toLowerCase() )
 		// )		
-	);
-
-	const saveTodos = ( newTodos ) => {
-		localStorage.setItem('TODOS_V1', JSON.stringify( newTodos ));
-		setTodos( newTodos );	
-	}
+	);	
 
 	const completeTodo = ( text ) => {
 		const newTodos = [ ...todos ];
