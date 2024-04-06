@@ -16,7 +16,7 @@ function TodoCounter( { total, completed } ) {
         //     padding: '48px',
         // }}>
 
-        completed != total
+        completed != total || total == 0
         ?
             <h1 className="TodoCounter">                          
                     Has completado <span>{ completed }</span> de <span>{ total }</span> TODOS
