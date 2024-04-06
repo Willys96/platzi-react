@@ -1,4 +1,6 @@
+import React from 'react';
 import './TodoCounter.css';
+import { TodoContext } from '../TodoContext'
 
 const estilos = {
     backgroundColor: 'red'
@@ -6,6 +8,10 @@ const estilos = {
 
 function TodoCounter( { total, completed } ) {
 
+    const { 
+        completedTodos, 
+        totalTodos 
+    } =React.useContext( TodoContext )
 
     return ( 
         // <h1 style={ estilos }>   => estilos en línea mediante una variable
@@ -16,10 +22,10 @@ function TodoCounter( { total, completed } ) {
         //     padding: '48px',
         // }}>
 
-        completed != total || total == 0
+        completedTodos != totalTodos || totalTodos == 0 
         ?
             <h1 className="TodoCounter">                          
-                    Has completado <span>{ completed }</span> de <span>{ total }</span> TODOS
+                    Has completado <span>{ completedTodos }</span> de <span>{ totalTodos }</span> TODOS
             </h1>
         :
             <h1 className="TodoCounter">                          
