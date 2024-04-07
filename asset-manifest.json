@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Willys96/platzi-react.git/static/css/main.fa35365a.css",
+    "main.js": "/Willys96/platzi-react.git/static/js/main.2f3c48b2.js",
+    "index.html": "/Willys96/platzi-react.git/index.html",
+    "static/media/delete.svg": "/Willys96/platzi-react.git/static/media/delete.7018c4465589031bd51c8efbe21df9ca.svg",
+    "static/media/check.svg": "/Willys96/platzi-react.git/static/media/check.e9a948bba52a34123d2ed7aeda0ea495.svg",
+    "main.fa35365a.css.map": "/Willys96/platzi-react.git/static/css/main.fa35365a.css.map",
+    "main.2f3c48b2.js.map": "/Willys96/platzi-react.git/static/js/main.2f3c48b2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fa35365a.css",
+    "static/js/main.2f3c48b2.js"
+  ]
+}
